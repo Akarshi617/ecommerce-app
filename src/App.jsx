@@ -8,7 +8,9 @@ import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
-
+import Navbar from "./components/Navbar";
+// ... routes ke upar
+<Navbar />
 function App() {
   return (
     <AuthProvider>
