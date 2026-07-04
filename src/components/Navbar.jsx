@@ -36,8 +36,9 @@ function Navbar() {
     setEmail("");
   };
 
+  // safer version — user null hone par bhi crash nahi karega
   const getInitials = (fullName) => {
-    if (!fullName) return "";
+    if (!fullName || typeof fullName !== "string") return "?";
     return fullName.trim().slice(0, 2).toUpperCase();
   };
 
@@ -59,9 +60,21 @@ function Navbar() {
           zIndex: 999,
         }}
       >
-        <Link to="/" style={{ fontWeight: "800", fontSize: "20px", color: "#1e293b", textDecoration: "none" }}>
-          MyStore
-        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "40px" }}>
+          <Link to="/" style={{ fontWeight: "800", fontSize: "20px", color: "#1e293b", textDecoration: "none" }}>
+            MyStore
+          </Link>
+
+          {/* Navigation Links */}
+          <div style={{ display: "flex", gap: "24px" }}>
+            <Link to="/" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+              Home
+            </Link>
+            <Link to="/shop" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+              Shop
+            </Link>
+          </div>
+        </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
           {/* Cart Icon */}
@@ -164,7 +177,7 @@ function Navbar() {
           </div>
 
           {/* Login / Profile */}
-          {isLoggedIn ? (
+          {isLoggedIn && user ? (
             <div ref={profileRef} style={{ position: "relative" }}>
               <div
                 onClick={() => setProfileOpen((prev) => !prev)}
@@ -242,7 +255,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Login Modal — ab yeh nav ke bahar hai, isliye poori screen cover karega */}
+      {/* Login Modal */}
       {loginOpen && (
         <div
           onClick={() => setLoginOpen(false)}
