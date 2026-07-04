@@ -36,7 +36,6 @@ function Navbar() {
     setEmail("");
   };
 
-  // safer version — user null hone par bhi crash nahi karega
   const getInitials = (fullName) => {
     if (!fullName || typeof fullName !== "string") return "?";
     return fullName.trim().slice(0, 2).toUpperCase();
@@ -60,23 +59,20 @@ function Navbar() {
           zIndex: 999,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "40px" }}>
-          <Link to="/" style={{ fontWeight: "800", fontSize: "20px", color: "#1e293b", textDecoration: "none" }}>
-            MyStore
+        {/* Left side — sirf logo */}
+        <Link to="/" style={{ fontWeight: "800", fontSize: "20px", color: "#1e293b", textDecoration: "none" }}>
+          MyStore
+        </Link>
+
+        {/* Right side — Home, Shop, Cart, Login sab yahan */}
+        <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
+          <Link to="/" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+            Home
+          </Link>
+          <Link to="/shop" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+            Shop
           </Link>
 
-          {/* Navigation Links */}
-          <div style={{ display: "flex", gap: "24px" }}>
-            <Link to="/" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
-              Home
-            </Link>
-            <Link to="/shop" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
-              Shop
-            </Link>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
           {/* Cart Icon */}
           <div ref={cartRef} style={{ position: "relative" }}>
             <button
