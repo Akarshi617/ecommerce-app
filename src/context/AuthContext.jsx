@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
     saveToStorage("user", user);
   }, [user]);
 
-  // email + name se login (Navbar modal isse use karta hai)
+  // email + name se login, Navbar modal isse use karta hai
   const login = (name, email) => {
     setUser({ name, email });
   };
