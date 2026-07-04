@@ -10,9 +10,14 @@ export function AuthProvider({ children }) {
     saveToStorage("user", user);
   }, [user]);
 
-  // name aur email dono se login, name ke pehle 2 letters avatar ke liye use honge
+  // email + name se login (Navbar modal isse use karta hai)
   const login = (name, email) => {
     setUser({ name, email });
+  };
+
+  // seedha guest ke naam se login, checkout page ke liye
+  const loginAsGuest = () => {
+    setUser({ name: "Guest", email: "guest@mystore.com" });
   };
 
   const logout = () => {
@@ -20,7 +25,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout }}>
+    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, loginAsGuest, logout }}>
       {children}
     </AuthContext.Provider>
   );
