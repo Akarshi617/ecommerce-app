@@ -35,17 +35,17 @@ function Home() {
   };
 
   return (
-    <div style={{ background: "radial-gradient(circle at 30% 20%, #12183a, #0a0e27 70%)", color: "#fff", minHeight: "100vh" }}>
+    <div style={{ background: "radial-gradient(circle at 30% 20%, #eef2ff, #ffffff 70%)", color: "#1e293b", minHeight: "100vh" }}>
 
       {/* Hero Section */}
       <section style={{ textAlign: "center", padding: "110px 20px 60px" }}>
-        <p style={{ color: "#facc15", fontWeight: "700", letterSpacing: "2px", marginBottom: "10px" }}>
+        <p style={{ color: "#d97706", fontWeight: "700", letterSpacing: "2px", marginBottom: "10px" }}>
           NEW COLLECTION 2026
         </p>
         <h1 style={{ fontSize: "52px", marginBottom: "16px", fontWeight: "800" }}>
-          Shop Smarter with <span style={{ color: "#facc15" }}>MyStore</span>
+          Shop Smarter with <span style={{ color: "#f59e0b" }}>MyStore</span>
         </h1>
-        <p style={{ fontSize: "18px", color: "#9ca3af", marginBottom: "35px" }}>
+        <p style={{ fontSize: "18px", color: "#64748b", marginBottom: "35px" }}>
           Discover top-quality products at prices you'll love
         </p>
         <Link to="/shop">
@@ -54,12 +54,12 @@ function Home() {
               padding: "14px 36px",
               fontSize: "16px",
               fontWeight: "600",
-              color: "#0a0e27",
-              background: "#facc15",
+              color: "#fff",
+              background: "#f59e0b",
               border: "none",
               borderRadius: "8px",
               cursor: "pointer",
-              boxShadow: "0 4px 20px rgba(250, 204, 21, 0.35)",
+              boxShadow: "0 4px 20px rgba(245, 158, 11, 0.35)",
               transition: "transform 0.2s",
             }}
             onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
@@ -77,35 +77,36 @@ function Home() {
             key={f.id}
             onClick={() => handleFeatureClick(f.id)}
             style={{
-              background: "#12183a",
-              border: "1px solid #1e2545",
+              background: "#ffffff",
+              border: "1px solid #e2e8f0",
               borderRadius: "16px",
               padding: "30px",
               width: "220px",
               textAlign: "center",
               cursor: "pointer",
+              boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
               transition: "transform 0.3s, border-color 0.3s",
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.transform = "translateY(-8px)";
-              e.currentTarget.style.borderColor = "#3b82f6";
+              e.currentTarget.style.borderColor = "#f59e0b";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.borderColor = "#1e2545";
+              e.currentTarget.style.borderColor = "#e2e8f0";
             }}
           >
             <div style={{ fontSize: "36px", marginBottom: "12px" }}>{f.icon}</div>
             <h4 style={{ marginBottom: "8px" }}>{f.title}</h4>
-            <p style={{ color: "#9ca3af", fontSize: "14px" }}>{f.desc}</p>
+            <p style={{ color: "#64748b", fontSize: "14px" }}>{f.desc}</p>
           </div>
         ))}
       </section>
 
       {/* Trending Products */}
-      <section style={{ padding: "60px 40px 80px", background: "#080b1f" }}>
+      <section style={{ padding: "60px 40px 80px", background: "#f8fafc" }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <p style={{ color: "#facc15", fontWeight: "700", letterSpacing: "2px", fontSize: "13px" }}>
+          <p style={{ color: "#d97706", fontWeight: "700", letterSpacing: "2px", fontSize: "13px" }}>
             TOP RATED
           </p>
           <h2 style={{ fontSize: "32px", fontWeight: "700" }}>Trending Products</h2>
@@ -117,20 +118,21 @@ function Home() {
               key={item.id}
               onClick={() => navigate(`/product/${item.id}`)}
               style={{
-                background: "#12183a",
-                border: "1px solid #1e2545",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: "14px",
                 padding: "16px",
                 cursor: "pointer",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
                 transition: "transform 0.3s, border-color 0.3s",
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.transform = "translateY(-6px)";
-                e.currentTarget.style.borderColor = "#facc15";
+                e.currentTarget.style.borderColor = "#f59e0b";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = "#1e2545";
+                e.currentTarget.style.borderColor = "#e2e8f0";
               }}
             >
               <img
@@ -140,19 +142,19 @@ function Home() {
               />
               <h4 style={{ margin: "12px 0 6px", fontSize: "15px" }}>{item.title}</h4>
               <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "6px" }}>
-                <span style={{ color: "#facc15" }}>★</span>
-                <span style={{ color: "#9ca3af", fontSize: "13px" }}>{item.rating}</span>
+                <span style={{ color: "#f59e0b" }}>★</span>
+                <span style={{ color: "#64748b", fontSize: "13px" }}>{item.rating}</span>
               </div>
-              <p style={{ color: "#facc15", fontWeight: "700" }}>₹{item.price}</p>
+              <p style={{ color: "#d97706", fontWeight: "700" }}>₹{item.price}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Testimonials */}
-      <section style={{ padding: "80px 40px", background: "radial-gradient(circle at 70% 30%, #12183a, #0a0e27 70%)" }}>
+      <section style={{ padding: "80px 40px", background: "radial-gradient(circle at 70% 30%, #eef2ff, #ffffff 70%)" }}>
         <div style={{ textAlign: "center", marginBottom: "50px" }}>
-          <p style={{ color: "#facc15", fontWeight: "700", letterSpacing: "2px", fontSize: "13px" }}>
+          <p style={{ color: "#d97706", fontWeight: "700", letterSpacing: "2px", fontSize: "13px" }}>
             TESTIMONIALS
           </p>
           <h2 style={{ fontSize: "32px", fontWeight: "700" }}>What Our Customers Say</h2>
@@ -160,11 +162,11 @@ function Home() {
 
         <div style={{ display: "flex", gap: "24px", flexWrap: "wrap", justifyContent: "center", maxWidth: "1100px", margin: "0 auto" }}>
           {testimonials.map((t, i) => (
-            <div key={i} style={{ background: "#12183a", border: "1px solid #1e2545", borderRadius: "16px", padding: "28px", width: "300px" }}>
-              <div style={{ color: "#facc15", marginBottom: "12px" }}>
+            <div key={i} style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "16px", padding: "28px", width: "300px", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+              <div style={{ color: "#f59e0b", marginBottom: "12px" }}>
                 {"★".repeat(t.rating)}{"☆".repeat(5 - t.rating)}
               </div>
-              <p style={{ color: "#d1d5db", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
+              <p style={{ color: "#475569", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
                 "{t.text}"
               </p>
               <p style={{ fontWeight: "700", fontSize: "14px" }}>{t.name}</p>
@@ -193,25 +195,18 @@ function Modal({ children, onClose, title }) {
     <div
       onClick={onClose}
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        background: "rgba(0,0,0,0.6)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
+        position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+        background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center",
+        justifyContent: "center", zIndex: 1000,
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{ background: "#12183a", border: "1px solid #1e2545", borderRadius: "16px", padding: "30px", width: "360px", maxWidth: "90%" }}
+        style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "16px", padding: "30px", width: "360px", maxWidth: "90%" }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-          <h3 style={{ margin: 0, color: "#fff" }}>{title}</h3>
-          <span onClick={onClose} style={{ cursor: "pointer", fontSize: "20px", color: "#9ca3af" }}>✕</span>
+          <h3 style={{ margin: 0, color: "#1e293b" }}>{title}</h3>
+          <span onClick={onClose} style={{ cursor: "pointer", fontSize: "20px", color: "#94a3b8" }}>✕</span>
         </div>
         {children}
       </div>
@@ -229,17 +224,7 @@ function PaymentOptions() {
   return (
     <div>
       {options.map((opt, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            padding: "12px 0",
-            borderBottom: i !== options.length - 1 ? "1px solid #1e2545" : "none",
-            color: "#e5e7eb",
-          }}
-        >
+        <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px 0", borderBottom: i !== options.length - 1 ? "1px solid #e2e8f0" : "none", color: "#334155" }}>
           <span style={{ fontSize: "20px" }}>{opt.icon}</span>
           <span>{opt.name}</span>
         </div>
@@ -250,9 +235,9 @@ function PaymentOptions() {
 
 function DeliveryInfo() {
   return (
-    <div style={{ color: "#9ca3af", lineHeight: "1.8" }}>
-      <p>📦 Standard Delivery: <strong style={{ color: "#fff" }}>2-3 business days</strong></p>
-      <p>⚡ Express Delivery: <strong style={{ color: "#fff" }}>Next day</strong></p>
+    <div style={{ color: "#64748b", lineHeight: "1.8" }}>
+      <p>📦 Standard Delivery: <strong style={{ color: "#1e293b" }}>2-3 business days</strong></p>
+      <p>⚡ Express Delivery: <strong style={{ color: "#1e293b" }}>Next day</strong></p>
       <p>🌍 We deliver across all major cities</p>
       <p>📍 Live order tracking available after checkout</p>
     </div>
