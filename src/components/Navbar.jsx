@@ -16,7 +16,6 @@ function Navbar() {
   const cartRef = useRef(null);
   const profileRef = useRef(null);
 
-  // bahar click karne pe dropdowns close ho jayein
   useEffect(() => {
     function handleClickOutside(e) {
       if (cartRef.current && !cartRef.current.contains(e.target)) setCartOpen(false);
@@ -37,7 +36,6 @@ function Navbar() {
     setEmail("");
   };
 
-  // naam ke pehle do letters, avatar ke liye
   const getInitials = (fullName) => {
     if (!fullName) return "";
     return fullName.trim().slice(0, 2).toUpperCase();
@@ -277,6 +275,8 @@ function Navbar() {
               placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoFocus
+              autoComplete="off"
               style={{
                 width: "100%",
                 padding: "10px",
@@ -292,6 +292,7 @@ function Navbar() {
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="off"
               style={{
                 width: "100%",
                 padding: "10px",
