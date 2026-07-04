@@ -12,14 +12,12 @@ function Shop() {
   const sortByPrice = searchParams.get("sort") === "price";
   const activeCategory = searchParams.get("category") || "all";
 
-  // saari categories fetch karo ek baar
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
 
-  // jab category change ho, uske hisaab se products fetch karo
   useEffect(() => {
     setLoading(true);
     const url =
@@ -53,7 +51,7 @@ function Shop() {
   }
 
   return (
-    <div style={{ padding: "40px", background: "#f9f9f9", minHeight: "90vh" }}>
+    <div style={{ padding: "110px 40px 40px", background: "#f9f9f9", minHeight: "100vh" }}>
       {/* Category Tabs */}
       <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "24px" }}>
         <button
