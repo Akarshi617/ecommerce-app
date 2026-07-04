@@ -3,45 +3,76 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Shop() {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const sortByPrice = searchParams.get("sort") === "price";
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const sortByPrice = searchParams.get("sort") === "price";
+  const activeCategory = searchParams.get("category") || "all";
+
+  // saari categories fetch karo ek baar
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
+    fetch("https://dummyjson.com/products/categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
+
+  // jab category change ho, uske hisaab se products fetch karo
+  useEffect(() => {
+    setLoading(true);
+    const url =
+      activeCategory === "all"
+        ? "https://dummyjson.com/products?limit=100"
+        : `https://dummyjson.com/products/category/${activeCategory}`;
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
         setLoading(false);
       })
       .catch((err) => console.log("Error fetching products:", err));
-  }, []);
+  }, [activeCategory]);
 
   const goToProduct = (id) => {
     navigate(`/product/${id}`);
+  };
+
+  const handleCategoryClick = (slug) => {
+    setSearchParams(slug === "all" ? {} : { category: slug });
   };
 
   let filteredProducts = products.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // agar Best Prices se aaye hain, price ke hisaab se low to high sort karo
   if (sortByPrice) {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   }
 
-  if (loading) {
-    return (
-      <p style={{ textAlign: "center", marginTop: "50px", fontSize: "18px" }}>
-        Loading products...
-      </p>
-    );
-  }
-
   return (
     <div style={{ padding: "40px", background: "#f9f9f9", minHeight: "90vh" }}>
+      {/* Category Tabs */}
+      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "24px" }}>
+        <button
+          onClick={() => handleCategoryClick("all")}
+          style={categoryBtnStyle(activeCategory === "all")}
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat.slug}
+            onClick={() => handleCategoryClick(cat.slug)}
+            style={categoryBtnStyle(activeCategory === cat.slug)}
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
+
       <div
         style={{
           display: "flex",
@@ -52,8 +83,8 @@ function Shop() {
           marginBottom: "24px",
         }}
       >
-        <h2 style={{ color: "#1a1a2e", margin: 0 }}>
-          {sortByPrice ? "Best Prices" : "All Products"}
+        <h2 style={{ color: "#1a1a2e", margin: 0, textTransform: "capitalize" }}>
+          {sortByPrice ? "Best Prices" : activeCategory === "all" ? "All Products" : activeCategory}
         </h2>
 
         <input
@@ -72,8 +103,12 @@ function Shop() {
         />
       </div>
 
-      {filteredProducts.length === 0 ? (
-        <p style={{ color: "#777" }}>No products found matching "{search}"</p>
+      {loading ? (
+        <p style={{ textAlign: "center", marginTop: "50px", fontSize: "18px" }}>
+          Loading products...
+        </p>
+      ) : filteredProducts.length === 0 ? (
+        <p style={{ color: "#777" }}>No products found.</p>
       ) : (
         <div
           style={{
@@ -114,7 +149,7 @@ function Shop() {
                 <span style={{ color: "#777", fontSize: "13px" }}>{item.rating}</span>
               </div>
               <p style={{ color: "#e94560", fontWeight: "700", fontSize: "16px" }}>
-              ₹{item.price}
+                ₹{item.price}
               </p>
             </div>
           ))}
@@ -122,6 +157,20 @@ function Shop() {
       )}
     </div>
   );
+}
+
+function categoryBtnStyle(active) {
+  return {
+    padding: "8px 18px",
+    borderRadius: "20px",
+    border: active ? "none" : "1px solid #ddd",
+    background: active ? "#1a1a2e" : "#fff",
+    color: active ? "#fff" : "#333",
+    fontSize: "13px",
+    fontWeight: "600",
+    cursor: "pointer",
+    textTransform: "capitalize",
+  };
 }
 
 export default Shop;
