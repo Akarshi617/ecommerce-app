@@ -13,9 +13,9 @@ function Navbar() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "18px 40px",
-        background: "linear-gradient(90deg, #1a1a2e, #16213e)",
+        background: "#0a0e27",
         color: "#fff",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+        borderBottom: "1px solid #1e2545",
         position: "sticky",
         top: 0,
         zIndex: 100,
@@ -34,7 +34,20 @@ function Navbar() {
             ● Guest User
           </span>
         ) : (
-          <Link to="/login" style={navLinkStyle}>Login</Link>
+          <Link
+            to="/login"
+            style={{
+              background: "#3b82f6",
+              color: "#fff",
+              padding: "8px 20px",
+              borderRadius: "6px",
+              textDecoration: "none",
+              fontSize: "14px",
+              fontWeight: "600",
+            }}
+          >
+            Login to your account
+          </Link>
         )}
 
         <div style={{ position: "relative", fontSize: "22px" }}>
@@ -45,8 +58,8 @@ function Navbar() {
                 position: "absolute",
                 top: "-10px",
                 right: "-12px",
-                background: "#e94560",
-                color: "#fff",
+                background: "#facc15",
+                color: "#0a0e27",
                 fontSize: "12px",
                 fontWeight: "700",
                 borderRadius: "50%",
@@ -67,7 +80,7 @@ function Navbar() {
 }
 
 const navLinkStyle = {
-  color: "#fff",
+  color: "#cbd5e1",
   textDecoration: "none",
   fontSize: "16px",
   fontWeight: "500",
