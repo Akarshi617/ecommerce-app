@@ -1,25 +1,25 @@
 import { createContext, useState, useContext, useEffect } from "react";
+import { getFromStorage, saveToStorage } from "../utils/storage";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  // localStorage se initial value uthao, agar nahi hai toh khaali array
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cart, setCart] = useState(() => getFromStorage("cart", []));
 
-  // jab bhi cart change ho, localStorage mein save kar do
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveToStorage("cart", cart);
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prev) => [...prev, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
