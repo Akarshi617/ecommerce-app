@@ -42,7 +42,7 @@ Then open the localhost link shown in the terminal.
 
 ## Live Demo
 
-[Add your Vercel/Netlify link here]
+https://ecommerce-app-kappa-six-82.vercel.app/
 
 ## Things I'd Improve Later
 
