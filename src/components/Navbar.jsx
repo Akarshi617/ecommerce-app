@@ -49,27 +49,62 @@ function Navbar() {
           top: 0,
           left: 0,
           width: "100%",
+          boxSizing: "border-box",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "16px 40px",
-          background: "rgba(255,255,255,0.85)",
+          padding: "14px 24px",
+          background: "rgba(255,255,255,0.9)",
           backdropFilter: "blur(8px)",
           borderBottom: "1px solid #e5e7eb",
           zIndex: 999,
+          overflow: "visible",
         }}
       >
-        {/* Left side — sirf logo */}
-        <Link to="/" style={{ fontWeight: "800", fontSize: "20px", color: "#1e293b", textDecoration: "none" }}>
+        {/* Left side — logo */}
+        <Link
+          to="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            fontWeight: "800",
+            fontSize: "18px",
+            color: "#1e293b",
+            textDecoration: "none",
+            flexShrink: 0,
+          }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6 8H18L17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20L6 8Z"
+              stroke="#f59e0b"
+              strokeWidth="2"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M9 8V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V8"
+              stroke="#f59e0b"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
           MyStore
         </Link>
 
-        {/* Right side — Home, Shop, Cart, Login sab yahan */}
-        <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-          <Link to="/" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+        {/* Right side — Home, Shop, Cart, Login */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "14px",
+            flexShrink: 0,
+          }}
+        >
+          <Link to="/" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "13px", whiteSpace: "nowrap" }}>
             Home
           </Link>
-          <Link to="/shop" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "14px" }}>
+          <Link to="/shop" style={{ color: "#334155", textDecoration: "none", fontWeight: "600", fontSize: "13px", whiteSpace: "nowrap" }}>
             Shop
           </Link>
 
@@ -81,9 +116,10 @@ function Navbar() {
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                fontSize: "22px",
+                fontSize: "20px",
                 position: "relative",
                 color: "#1e293b",
+                padding: 0,
               }}
             >
               🛒
@@ -92,14 +128,14 @@ function Navbar() {
                   style={{
                     position: "absolute",
                     top: "-6px",
-                    right: "-10px",
+                    right: "-8px",
                     background: "#f59e0b",
                     color: "#fff",
                     borderRadius: "50%",
-                    fontSize: "11px",
+                    fontSize: "10px",
                     fontWeight: "700",
-                    width: "18px",
-                    height: "18px",
+                    width: "16px",
+                    height: "16px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -114,9 +150,9 @@ function Navbar() {
               <div
                 style={{
                   position: "absolute",
-                  top: "40px",
+                  top: "36px",
                   right: 0,
-                  width: "300px",
+                  width: "280px",
                   background: "#fff",
                   border: "1px solid #e5e7eb",
                   borderRadius: "12px",
@@ -178,8 +214,8 @@ function Navbar() {
               <div
                 onClick={() => setProfileOpen((prev) => !prev)}
                 style={{
-                  width: "36px",
-                  height: "36px",
+                  width: "34px",
+                  height: "34px",
                   borderRadius: "50%",
                   background: "#f59e0b",
                   color: "#fff",
@@ -187,8 +223,9 @@ function Navbar() {
                   alignItems: "center",
                   justifyContent: "center",
                   fontWeight: "700",
-                  fontSize: "13px",
+                  fontSize: "12px",
                   cursor: "pointer",
+                  flexShrink: 0,
                 }}
               >
                 {getInitials(user.name)}
@@ -198,9 +235,9 @@ function Navbar() {
                 <div
                   style={{
                     position: "absolute",
-                    top: "46px",
+                    top: "44px",
                     right: 0,
-                    width: "200px",
+                    width: "190px",
                     background: "#fff",
                     border: "1px solid #e5e7eb",
                     borderRadius: "12px",
@@ -235,14 +272,16 @@ function Navbar() {
             <button
               onClick={() => setLoginOpen(true)}
               style={{
-                padding: "8px 20px",
+                padding: "7px 16px",
                 background: "#f59e0b",
                 color: "#fff",
                 border: "none",
                 borderRadius: "8px",
                 cursor: "pointer",
                 fontWeight: "600",
-                fontSize: "14px",
+                fontSize: "13px",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               Login
